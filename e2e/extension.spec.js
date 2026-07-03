@@ -9,7 +9,7 @@ test('popup page renders without script errors', async ({ context, extensionId }
   const errors = [];
   page.on('pageerror', e => errors.push(e.message));
   await page.goto(`chrome-extension://${extensionId}/popup.html`);
-  await expect(page.locator('.brand-name')).toHaveText('CookieFlush');
+  await expect(page.locator('.brand-name')).toHaveText('CookieMaid');
   await expect(page.locator('#primary-action')).toBeAttached();
   expect(errors, errors.join('\n')).toEqual([]);
   await page.close();

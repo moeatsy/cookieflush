@@ -1,10 +1,10 @@
-# CookieFlush
+# CookieMaid
 
 **Auto-delete cookies when tabs close.** Manifest V3-native replacement for the discontinued Cookie AutoDelete extension.
 
 **[Install from the Chrome Web Store →](https://chromewebstore.google.com/detail/auto-delete-cookies-on-ta/pfkgmfddjojnoekblkdgpgmehpagjflg)**
 
-> The store listing is titled *"Auto-Delete Cookies on Tab Close — Cookie AutoDelete Alternative, Whitelist"* — same extension, CookieFlush is the product name.
+> The store listing is titled *"Auto-Delete Cookies on Tab Close — Cookie AutoDelete Alternative, Whitelist"* — same extension, CookieMaid is the product name.
 
 - ✅ Whitelist trusted sites (banks, email, GitHub)
 - ✅ Greylist for temporary protection (default 7 days)
@@ -43,7 +43,7 @@ Design system lives in `tokens.css` — CSS custom properties applied to popup, 
 ## File layout
 
 ```
-cookieflush-extension/
+cookiemaid/
 ├── manifest.json
 ├── background.js          # Service worker — cleanup logic, daily badge counter
 ├── tokens.css             # Design tokens (single source of truth)
@@ -76,7 +76,7 @@ cookieflush-extension/
 | `<all_urls>`      | Always — required by `chrome.cookies` API                 |
 | `browsingData`    | **Optional** — requested only the first time you enable LocalStorage / IndexedDB / cache cleanup |
 
-CookieFlush does **not** read page content, browsing history, or any user data beyond cookies. There is no telemetry, no remote server, no analytics SDK.
+CookieMaid does **not** read page content, browsing history, or any user data beyond cookies. There is no telemetry, no remote server, no analytics SDK.
 
 ## Storage layout
 

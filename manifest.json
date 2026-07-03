@@ -30,7 +30,7 @@
   },
   "action": {
     "default_popup": "popup.html",
-    "default_title": "CookieFlush",
+    "default_title": "CookieMaid",
     "default_icon": {
       "16": "icons/16_16.png",
       "48": "icons/48_48.png"

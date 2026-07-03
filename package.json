@@ -1,9 +1,9 @@
 {
-  "name": "cookieflush",
+  "name": "cookiemaid",
   "version": "1.0.9",
   "private": true,
   "type": "module",
-  "description": "Dev/test tooling for the CookieFlush extension (not shipped in the packaged zip).",
+  "description": "Dev/test tooling for the CookieMaid extension (not shipped in the packaged zip).",
   "scripts": {
     "test": "node --test",
     "test:e2e": "playwright test",

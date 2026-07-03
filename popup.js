@@ -136,7 +136,7 @@ function renderHero() {
     els.status.textContent = 'NOT A WEBSITE';
     els.domain.textContent = 'Internal page';
     els.meta.hidden = false;
-    els.meta.textContent = 'Open a regular website to use CookieFlush.';
+    els.meta.textContent = 'Open a regular website to use CookieMaid.';
     els.primary.disabled = true;
     els.greyBtn.disabled = true;
     els.cleanBtn.disabled = true;

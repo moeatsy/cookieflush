@@ -54,7 +54,7 @@ function ratingMsg(key, fallback) {
 }
 
 const RATING_OPTS = {
-  appName: ratingMsg('shortName', 'CookieFlush'),
+  appName: ratingMsg('shortName', 'CookieMaid'),
   threshold: 5,
   scale: 'emoji',
   i18n: {
@@ -253,12 +253,12 @@ function ctxMsg(key, subs, fallback) {
 async function ensureContextMenus() {
   try { await chrome.contextMenus.removeAll(); } catch {}
   // Two items (whitelist + per-site clean) would otherwise auto-nest under
-  // Chrome's long store name, so we group them under an explicit "CookieFlush"
+  // Chrome's long store name, so we group them under an explicit "CookieMaid"
   // parent. Per-site "Clean this site's cookies now" mirrors the popup button —
   // it clears only the current site and never touches other tabs' sessions.
   chrome.contextMenus.create({
     id: 'cookieflush-parent',
-    title: 'CookieFlush',
+    title: 'CookieMaid',
     contexts: ['page', 'link'],
   });
   // Whitelist offers the same subdomain-vs-whole-domain split as the popup. Two

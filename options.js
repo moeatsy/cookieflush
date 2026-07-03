@@ -209,11 +209,11 @@ async function ensureBrowsingDataPermission(reason) {
   try {
     const granted = await chrome.permissions.request({ permissions: ['browsingData'] });
     if (granted) {
-      showBdBanner(banner, 'success', 'Permission granted — CookieFlush can now clear browser storage.');
+      showBdBanner(banner, 'success', 'Permission granted — CookieMaid can now clear browser storage.');
       autoHideBanner(banner, 4000);
       return true;
     }
-    showBdBanner(banner, 'danger', 'Permission denied. CookieFlush will keep cleaning cookies only. Click a checkbox above to try again.');
+    showBdBanner(banner, 'danger', 'Permission denied. CookieMaid will keep cleaning cookies only. Click a checkbox above to try again.');
     autoHideBanner(banner, 6000);
     return false;
   } catch (e) {
@@ -770,7 +770,7 @@ async function exportConfig() {
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = `cookieflush-config-${new Date().toISOString().slice(0, 10)}.json`;
+  a.download = `cookiemaid-config-${new Date().toISOString().slice(0, 10)}.json`;
   document.body.appendChild(a);
   a.click();
   a.remove();

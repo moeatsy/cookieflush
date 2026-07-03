@@ -1,14 +1,14 @@
-# CookieFlush Privacy Policy
+# CookieMaid Privacy Policy
 
 _Last updated: 2026-05-17_
 
-CookieFlush is a Chrome extension that auto-deletes cookies when you close
+CookieMaid is a Chrome extension that auto-deletes cookies when you close
 tabs. **It collects no personal data, runs no analytics, and contacts no
 remote servers.**
 
-## What data CookieFlush stores
+## What data CookieMaid stores
 
-CookieFlush stores **only** the following, locally on your device, with
+CookieMaid stores **only** the following, locally on your device, with
 optional sync via Chrome's `storage.sync` (Google's infrastructure — never
 ours):
 
@@ -22,7 +22,7 @@ information are ever read, stored, or transmitted.
 
 ## Permissions
 
-CookieFlush requests these Chrome permissions:
+CookieMaid requests these Chrome permissions:
 
 - **cookies** — read & delete cookies (the whole point of the extension)
 - **tabs** — detect tab open/close/navigation events
@@ -32,12 +32,12 @@ CookieFlush requests these Chrome permissions:
 - **scripting** — used once, after a successful manual cleanup, to display a small in-page rating prompt. The prompt is rendered in an isolated Shadow DOM, contains no remote code, and never reads page content
 - **browsingData** — optional LocalStorage / IndexedDB / cache cleanup
 - **`<all_urls>` (host permission)** — required by the `chrome.cookies` API
-  to access cookies from any visited domain. CookieFlush does **not** read
+  to access cookies from any visited domain. CookieMaid does **not** read
   page content, history, or any other user data with this permission.
 
 ## Third-party services
 
-None. CookieFlush has no backend, no analytics SDKs, and no third-party
+None. CookieMaid has no backend, no analytics SDKs, and no third-party
 scripts. The extension itself makes no outbound network requests; the only
 network activity it can cause is opening a new tab to the Chrome Web Store
 review page if you choose to leave a rating after a successful cleanup —
@@ -48,7 +48,7 @@ and only when you explicitly click that button.
 If you are signed into Chrome and have sync enabled, your whitelist and
 preferences sync across devices via Chrome's built-in `storage.sync` API.
 This is the same mechanism Chrome uses to sync your bookmarks; the data
-flows through Google's servers, never through CookieFlush servers (we have
+flows through Google's servers, never through CookieMaid servers (we have
 none).
 
 ## Changes

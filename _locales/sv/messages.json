@@ -4,7 +4,7 @@
     "description": "Displayed in Chrome Web Store and chrome://extensions."
   },
   "shortName": {
-    "message": "CookieFlush",
+    "message": "CookieMaid",
     "description": "Used when the full name would be too long."
   },
   "extensionDescription": {

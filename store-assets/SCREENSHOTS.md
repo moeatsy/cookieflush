@@ -37,9 +37,9 @@ Composition tips:
 **Goal:** "what actually happens."
 
 ```
-LEFT half (label: "Without CookieFlush") — Chrome devtools cookies tab
+LEFT half (label: "Without CookieMaid") — Chrome devtools cookies tab
    with ~80 rows of tracking cookies (mock data: doubleclick, _ga, ...).
-RIGHT half (label: "After 1 hour with CookieFlush") — same tab, 6 rows
+RIGHT half (label: "After 1 hour with CookieMaid") — same tab, 6 rows
    left (whitelisted sites only).
 
 Overlay text bottom: "Cookies clear themselves. You don't think about it."
@@ -64,7 +64,7 @@ Overlay top: "Granular control. Sync across devices."
 
 ```
 Diagram (vector, not screenshot):
-  Browser → CookieFlush (inside dashed "your device" box) → drain
+  Browser → CookieMaid (inside dashed "your device" box) → drain
   NO arrow to any cloud / server. Mark a faded silhouette of a cloud
   with strikethrough.
 
@@ -78,7 +78,7 @@ Below: small caption "Open source — verify yourself."
 
 ```
 2-column table:
-                       | CookieFlush | Chrome built-in |
+                       | CookieMaid | Chrome built-in |
 Auto-clean on tab close|    ✓        |        —        |
 Per-domain trigger     |    ✓        |  on browser quit|
 LocalStorage cleanup   |    Free     |        —        |
