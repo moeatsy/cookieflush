@@ -8,7 +8,7 @@ Cookie AutoDelete stopped working in Chrome in late 2024 — leaving 100,000+ us
 2. Browse normally — cookies for every other site get cleaned the moment you close that site's last tab.
 3. Need temporary protection? Greylist the site for a few days. Need to clean right now? Click the toolbar icon → "Clean now".
 
-No accounts. No telemetry. No remote servers. Open source.
+No accounts. No telemetry. No remote servers. Open source (GPL-3.0): https://github.com/moeatsy/cookiemaid
 
 
 ★ Key features
@@ -26,7 +26,7 @@ No accounts. No telemetry. No remote servers. Open source.
 ✅ Daily counter badge — quiet indicator that the extension is working
 ✅ Dark + light themes via prefers-color-scheme
 ✅ Export/import config — bring your setup to a new machine in seconds
-✅ Open source — fully inspectable
+✅ Open source — fully inspectable: https://github.com/moeatsy/cookiemaid
 
 
 ★ Why CookieMaid
