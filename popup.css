@@ -1,0 +1,400 @@
+/* Popup — 380px wide, ≤540px tall */
+
+/* The `hidden` attribute must always win: elements with an explicit display
+   (e.g. .btn is inline-flex, .wl-menu is flex) would otherwise ignore it and
+   stay visible when JS sets `.hidden = true`. */
+[hidden] { display: none !important; }
+
+body {
+  width: 380px;
+  font-size: var(--t-14);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0);
+  white-space: nowrap; border: 0;
+}
+
+/* === Header === */
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 var(--s-4);
+  border-bottom: 1px solid var(--border);
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+.brand-mark {
+  display: block;
+  width: 20px; height: 20px;
+}
+.brand-name {
+  font-size: var(--t-14);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-strong);
+}
+
+/* Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 18px;
+  cursor: pointer;
+}
+.switch input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  width: 100%; height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+.switch-track {
+  display: block;
+  width: 100%; height: 100%;
+  background: var(--border-strong);
+  border-radius: var(--r-full);
+  transition: background var(--dur-fast) var(--ease-out);
+  position: relative;
+}
+.switch-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px; height: 14px;
+  background: var(--surface);
+  border-radius: 50%;
+  transition: transform var(--dur-base) var(--ease-out);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+.switch input:checked + .switch-track { background: var(--accent); }
+.switch input:checked + .switch-track .switch-knob { transform: translateX(14px); }
+
+/* === Hero === */
+.hero {
+  padding: var(--s-5) var(--s-4) var(--s-4);
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+.hero-pill-row {
+  margin-bottom: var(--s-3);
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  padding: 4px var(--s-2);
+  border-radius: var(--r-full);
+  font-size: var(--t-11);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  line-height: 1;
+}
+.pill::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.pill.cleaning   { background: var(--accent-quiet); color: var(--accent); }
+.pill.whitelisted { background: var(--success-quiet); color: var(--success); }
+.pill.greylisted  { background: var(--warning-quiet); color: var(--warning); }
+.pill.paused      { background: var(--danger-quiet); color: var(--danger); }
+.pill.neutral     { background: var(--surface); color: var(--muted); border: 1px solid var(--border); }
+.pill.neutral::before { display: none; }
+
+.hero-domain {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--t-20);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-strong);
+  line-height: var(--lh-tight);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.hero-meta {
+  margin: var(--s-1) 0 0;
+  font-size: var(--t-12);
+  color: var(--muted);
+}
+
+/* === Actions === */
+.actions {
+  padding: var(--s-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+.actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-2);
+  margin-top: var(--s-2);
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  height: 36px;
+  padding: 0 var(--s-4);
+  border: 1px solid transparent;
+  border-radius: var(--r-3);
+  font-size: var(--t-14);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
+  white-space: nowrap;
+}
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-primary {
+  width: 100%;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+}
+.btn-primary:not(:disabled):hover { background: var(--accent-hover); }
+
+.btn-secondary {
+  height: 32px;
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+  font-size: var(--t-13);
+  font-weight: 500;
+}
+.btn-secondary:not(:disabled):hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+}
+
+.btn-ghost {
+  height: 32px;
+  background: transparent;
+  color: var(--muted);
+  font-size: var(--t-13);
+}
+.btn-ghost:not(:disabled):hover { background: var(--surface-hover); color: var(--text); }
+
+/* Global sweep — full-width, low-emphasis until hover, where it goes danger
+   to signal it signs you out of every non-whitelisted site (including open
+   tabs). The caption below it states this in plain words. */
+.btn-clean-all {
+  width: 100%;
+  margin-top: var(--s-3);
+  border: 1px solid var(--border);
+}
+.btn-clean-all:not(:disabled):hover {
+  background: var(--danger-quiet);
+  color: var(--danger);
+  border-color: var(--danger);
+}
+.btn-clean-all.confirm {
+  background: var(--danger-quiet);
+  color: var(--danger);
+  border-color: var(--danger);
+}
+.clean-all-desc {
+  margin: var(--s-1) 0 0;
+  color: var(--muted);
+  font-size: var(--t-12);
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* Whitelist split button — one primary "Whitelist this site" (keeps the whole
+   site) plus, only on a subdomain, a caret that drops a small menu with the
+   exact scope options. Normal users just press the big button; the rest use ▾. */
+.wl-split-wrap { position: relative; }
+.wl-split { display: flex; border-radius: var(--r-3); }
+.wl-split > #primary-action { flex: 1 1 auto; width: auto; min-width: 0; }
+/* Focus ring hugs the whole split control, not the square inner edge of one
+   half (which drew a stray line between the button and the caret). */
+.wl-split:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.wl-split > .btn:focus-visible { outline: none; }
+.wl-caret {
+  flex: 0 0 auto;
+  width: 44px;
+  padding: 0;
+  /* Bigger glyph — the scope menu was easy to miss at t-14 (user feedback). */
+  font-size: 18px;
+  line-height: 1;
+}
+/* When the caret is present, weld the two into one split control. */
+.wl-split:has(#wl-caret:not([hidden])) > #primary-action {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.wl-split:has(#wl-caret:not([hidden])) > .wl-caret {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  /* A clearly visible seam so the caret reads as a second button, not a
+     decoration on the first one. */
+  box-shadow: inset 2px 0 0 rgba(255, 255, 255, 0.45);
+}
+.wl-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  left: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  padding: var(--s-1);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+.wl-menu-item {
+  text-align: left;
+  padding: var(--s-2) var(--s-3);
+  background: transparent;
+  border: 0;
+  border-radius: var(--r-2);
+  font-size: var(--t-13);
+  color: var(--text);
+  cursor: pointer;
+  white-space: normal;
+  word-break: break-word;
+}
+.wl-menu-item:hover,
+.wl-menu-item:focus-visible {
+  background: var(--surface-hover);
+  outline: none;
+}
+
+/* Loading state — hide all text content (covers .btn-label spans), overlay a
+   spinner. */
+.btn.loading { color: transparent; pointer-events: none; }
+.btn.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px; height: 14px;
+  margin: -7px 0 0 -7px;
+  border: 2px solid var(--text);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 600ms linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .btn.loading::after { animation: none; }
+}
+
+.kbd-hint {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  font-size: var(--t-11);
+  color: var(--subtle);
+  align-items: center;
+  margin-top: -2px;
+}
+kbd {
+  display: inline-block;
+  padding: 1px 5px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: var(--r-1);
+  line-height: 1.2;
+}
+
+/* === Stats === */
+.stats {
+  display: flex;
+  align-items: center;
+  padding: var(--s-3) var(--s-4);
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+}
+.stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.stat-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--t-24);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-strong);
+  line-height: 1;
+}
+.stat-label {
+  font-size: var(--t-11);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.stat-divider {
+  width: 1px;
+  height: 28px;
+  background: var(--border);
+  margin: 0 var(--s-3);
+}
+
+/* === Footer === */
+.popup-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 36px;
+  padding: 0 var(--s-4);
+  border-top: 1px solid var(--border);
+  font-size: var(--t-12);
+  color: var(--muted);
+}
+.popup-footer a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+}
+.popup-footer a:hover { color: var(--accent); }
+.popup-footer .meta { color: var(--subtle); }
+.popup-footer .meta a { color: var(--subtle); font-weight: 400; }
+.popup-footer .meta a:hover { color: var(--accent); }
+
+/* === Disabled-state polish === */
+/* Only the hero (status read-out) is de-emphasized while paused — the action
+   buttons stay full-opacity because they remain usable: whitelist/greylist
+   management and manual "Clean now" / "Clean all" all work with auto-cleanup off. */
+body.is-disabled .hero {
+  opacity: 0.55;
+}
+body.is-disabled .pill.cleaning {
+  background: var(--danger-quiet);
+  color: var(--danger);
+}

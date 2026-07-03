@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CookieFlush — Settings</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="page-header-inner">
+      <span class="brand">
+        <img src="icons/48_48.png" alt="" width="24" height="24" class="brand-mark">
+        <span class="brand-name">CookieFlush <span class="brand-name-sub">Settings</span></span>
+      </span>
+      <nav class="page-header-meta">
+        <span class="version" id="header-version"></span>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-grid">
+    <aside class="sidenav" aria-label="Settings sections">
+      <a href="#behavior" data-section="behavior" class="sidenav-item">Behavior</a>
+      <a href="#storage" data-section="storage" class="sidenav-item">Storage</a>
+      <a href="#whitelist" data-section="whitelist" class="sidenav-item">Whitelist</a>
+      <a href="#greylist" data-section="greylist" class="sidenav-item">Greylist</a>
+      <a href="#rules" data-section="rules" class="sidenav-item">Cookie rules</a>
+      <a href="#schedule" data-section="schedule" class="sidenav-item">Schedule</a>
+      <a href="#activity" data-section="activity" class="sidenav-item">Activity</a>
+      <a href="#sync" data-section="sync" class="sidenav-item">Sync</a>
+      <a href="#about" data-section="about" class="sidenav-item">About</a>
+    </aside>
+
+    <main class="page-content">
+      <section id="behavior" class="section">
+        <h2 class="section-title">Behavior</h2>
+        <p class="section-desc">When CookieFlush should clean cookies for sites you haven't whitelisted.</p>
+
+        <label class="row">
+          <input type="checkbox" id="cleanOnTabClose">
+          <span>
+            <span class="row-label">When I close a tab</span>
+            <span class="row-help">The main mode. When a site's last tab closes, its own cookies — plus any partitioned (CHIPS) cookies scoped to it — are removed, unless it's whitelisted.</span>
+          </span>
+        </label>
+        <label class="row">
+          <input type="checkbox" id="cleanOnNavigation">
+          <span>
+            <span class="row-label">When I navigate away from a site</span>
+            <span class="row-help">Aggressive — cleans the site you just left the moment you switch domains, even mid-session.</span>
+          </span>
+        </label>
+        <label class="row">
+          <input type="checkbox" id="cleanOnStartup">
+          <span>
+            <span class="row-label">When Chrome starts</span>
+            <span class="row-help">Wipes all non-whitelisted cookies on browser launch.</span>
+          </span>
+        </label>
+
+        <label class="row">
+          <input type="checkbox" id="cleanThirdParty">
+          <span>
+            <span class="row-label">Also remove third-party cookies <span class="chip warn">on by default</span></span>
+            <span class="row-help"><strong>⚠ Heads up — possible side effects.</strong> When on, closing a tab runs a store-wide sweep (like Cookie AutoDelete): cookies for <em>every</em> site with no open tab and not on your whitelist are cleared — third-party trackers and partitioned cookies included. Side effect: you'll be signed out of any site you haven't whitelisted once its tabs are closed, and some sites may need to re-verify your device or show cookie banners again. <strong>Add sites you want to stay logged into to your Whitelist first.</strong> Turn this off to clean only the site you just closed.</span>
+          </span>
+        </label>
+
+        <label class="row">
+          <span class="row-label">Cleanup grace period</span>
+          <select id="cleanupDelaySeconds" class="select">
+            <option value="0">Immediately</option>
+            <option value="10">10 seconds</option>
+            <option value="30">30 seconds</option>
+            <option value="60">1 minute</option>
+            <option value="120">2 minutes</option>
+          </select>
+        </label>
+        <p class="section-desc">How long CookieFlush waits after a tab closes before sweeping. While “Also remove third-party cookies” is on (the default), the sweep clears <em>all</em> cookies for sites with no open tab — first- <strong>and</strong> third-party — so this grace period covers the site you just closed too. Reopen a tab within the window and its cookies are kept; bulk tab closes group into one sweep. With third-party removal off, the closed site is cleaned immediately and this delay doesn’t apply.</p>
+      </section>
+
+      <section id="storage" class="section">
+        <h2 class="section-title">Storage to clean</h2>
+        <p class="section-desc">What else gets removed alongside cookies. <strong>Requires an extra Chrome permission</strong> — granted just-in-time the first time you turn one on.</p>
+
+        <label class="row">
+          <input type="checkbox" id="cleanCookies" checked disabled>
+          <span>
+            <span class="row-label">Cookies <span class="chip">always on</span></span>
+            <span class="row-help">The reason this extension exists.</span>
+          </span>
+        </label>
+        <label class="row needs-bd">
+          <input type="checkbox" id="cleanLocalStorage">
+          <span>
+            <span class="row-label">LocalStorage</span>
+            <span class="row-help">Some sites (Notion, Discord) store login in LocalStorage. Clearing it logs you out fully.</span>
+          </span>
+        </label>
+        <label class="row needs-bd">
+          <input type="checkbox" id="cleanIndexedDB">
+          <span>
+            <span class="row-label">IndexedDB</span>
+            <span class="row-help">Local databases used by SPAs for offline data.</span>
+          </span>
+        </label>
+        <label class="row needs-bd">
+          <input type="checkbox" id="cleanCache">
+          <span>
+            <span class="row-label">Cache &amp; storage <span class="chip warn">aggressive</span></span>
+            <span class="row-help">Clears the HTTP cache, the Cache API, and the FileSystem API. Forces images and scripts to re-download, and reclaims space sites stash and never clean up (e.g. large downloads on mega.nz).</span>
+          </span>
+        </label>
+        <label class="row needs-bd">
+          <input type="checkbox" id="cleanServiceWorkers">
+          <span>
+            <span class="row-label">Service workers</span>
+            <span class="row-help">Removes the background scripts sites register for offline use, push, and caching. Clears them for non-whitelisted sites alongside cookies, so a stale worker can't keep serving cached state after a cleanup.</span>
+          </span>
+        </label>
+
+        <div id="bd-status" class="banner hidden" role="status"></div>
+      </section>
+
+      <section id="whitelist" class="section">
+        <h2 class="section-title">Whitelist <small class="title-sub">(always keep cookies)</small></h2>
+        <p class="section-desc">Sites you want to stay signed in to. Subdomains are protected automatically — whitelisting <code>google.com</code> also protects <code>mail.google.com</code>. Pick <em>This host only</em> to protect exactly the address you type instead.</p>
+
+        <div class="row inline">
+          <input type="text" id="new-whitelist" placeholder="example.com" autocomplete="off" spellcheck="false">
+          <select id="new-whitelist-scope" class="select" aria-label="Protection scope">
+            <option value="site" selected>Whole site</option>
+            <option value="exact">This host only</option>
+          </select>
+          <button id="add-whitelist" class="btn btn-primary" type="button">Add</button>
+        </div>
+        <div id="whitelist-search-row" class="row inline hidden">
+          <input type="text" id="whitelist-search" placeholder="Search whitelist…" autocomplete="off" spellcheck="false" aria-label="Search whitelist">
+        </div>
+        <ul id="whitelist-list" class="entry-list" aria-label="Whitelisted domains"></ul>
+      </section>
+
+      <section id="greylist" class="section">
+        <h2 class="section-title">Greylist <small class="title-sub">(temporary)</small></h2>
+        <p class="section-desc">Sites protected for a fixed window. Add greylist entries by clicking the toolbar icon on the site you want to protect.</p>
+
+        <label class="row">
+          <span class="row-label">Default protection window</span>
+          <select id="greylistDurationDays" class="select">
+            <option value="1">1 day</option>
+            <option value="3">3 days</option>
+            <option value="7" selected>7 days</option>
+            <option value="14">14 days</option>
+            <option value="30">30 days</option>
+          </select>
+        </label>
+        <ul id="greylist-list" class="entry-list" aria-label="Greylisted domains"></ul>
+      </section>
+
+      <section id="rules" class="section">
+        <h2 class="section-title">Cookie rules <small class="title-sub">(advanced)</small></h2>
+        <p class="section-desc">Fine-grained control over individual cookies by name, instead of all-or-nothing per site. Most people never need this — leave it off and the whitelist works as before.</p>
+
+        <label class="row">
+          <input type="checkbox" id="enableCookieRules">
+          <span>
+            <span class="row-label">Enable per-cookie rules</span>
+            <span class="row-help">When on, these rules override the whitelist. A <strong>Keep</strong> rule protects a matching cookie even on a site that isn't whitelisted; a <strong>Delete</strong> rule removes a matching cookie even on a whitelisted site. Rules can apply to <strong>all sites</strong> (the global section) or to a specific domain — a domain rule wins over the global one for the same cookie name. Cookies a live tab still needs are always kept. Patterns support <code>*</code> wildcards — e.g. <code>_g*</code> matches <code>_ga</code>, <code>_gid</code>, <code>_gat</code>; <code>*token*</code> matches any name containing “token”; <code>*</code> matches every cookie.</span>
+          </span>
+        </label>
+
+        <div id="rules-editor" class="rules-editor hidden">
+          <div class="rules-presets">
+            <h3 class="rules-subhead">Quick presets <small class="title-sub">(all sites)</small></h3>
+            <p class="rules-subnote">For cookies whose names are the same across thousands of sites. One click adds them to the global rules below.</p>
+            <div id="rule-presets" class="preset-grid"></div>
+          </div>
+          <h3 class="rules-subhead">Rules</h3>
+          <div class="row inline">
+            <input type="text" id="new-rule-domain" placeholder="add a specific domain, e.g. example.com" autocomplete="off" spellcheck="false">
+            <button id="add-rule-domain" class="btn btn-primary" type="button">Add domain</button>
+          </div>
+          <div id="rules-list" class="rules-list"></div>
+        </div>
+      </section>
+
+      <section id="schedule" class="section">
+        <h2 class="section-title">Scheduled sweep</h2>
+        <p class="section-desc">Periodically clear cookies for sites that have no open tabs and aren't whitelisted. Closed-and-forgotten sites get cleaned even if you never close their original tab.</p>
+
+        <label class="row">
+          <span class="row-label">Run a sweep every</span>
+          <select id="scheduledCleanupMinutes" class="select">
+            <option value="0">Never (disabled)</option>
+            <option value="15">15 minutes</option>
+            <option value="60">1 hour</option>
+            <option value="240">4 hours</option>
+            <option value="1440">24 hours</option>
+          </select>
+        </label>
+      </section>
+
+      <section id="activity" class="section">
+        <h2 class="section-title">Activity</h2>
+        <p class="section-desc">Local log of cleanups. Stored on this device only — never synced or sent anywhere.</p>
+
+        <div class="activity-toolbar">
+          <div class="chips" role="tablist" aria-label="Filter activity">
+            <button class="chip is-active" data-filter="all" type="button">All</button>
+            <button class="chip" data-filter="tab" type="button">Per site</button>
+            <button class="chip" data-filter="scheduled" type="button">Scheduled</button>
+            <button class="chip" data-filter="manual" type="button">Sweep all</button>
+          </div>
+          <button id="clear-log" class="btn btn-ghost" type="button">Clear log</button>
+        </div>
+        <ul id="log-list" class="entry-list compact" aria-label="Deletion log"></ul>
+      </section>
+
+      <section id="sync" class="section">
+        <h2 class="section-title">Sync &amp; backup</h2>
+        <p class="section-desc">Whitelist, greylist, and settings sync across your Chrome devices via Chrome's own <code>storage.sync</code>. Logs and stats stay local.</p>
+
+        <div id="sync-status" class="banner" role="status">Checking sync state…</div>
+
+        <div class="row inline">
+          <button id="export-config" class="btn btn-secondary" type="button">Export config</button>
+          <button id="import-config" class="btn btn-secondary" type="button">Import config</button>
+          <button id="reset" class="btn btn-danger" type="button">Reset all to defaults</button>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <h2 class="section-title">About</h2>
+        <dl class="meta-list">
+          <dt>Version</dt><dd id="about-version"></dd>
+          <dt>Privacy policy</dt><dd><a href="https://extkit.dev/cookieflush/policy" target="_blank" rel="noopener">View →</a></dd>
+          <dt>Keyboard shortcuts</dt><dd><a href="chrome://extensions/shortcuts" id="kbd-link">Configure in Chrome →</a></dd>
+        </dl>
+        <p class="section-desc">CookieFlush is open-source. No telemetry. No accounts. No remote servers.</p>
+      </section>
+    </main>
+  </div>
+
+  <div id="save-indicator" class="save-indicator" role="status" aria-live="polite"></div>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>

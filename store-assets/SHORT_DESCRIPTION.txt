@@ -1,0 +1,1 @@
+Cookie AutoDelete stopped in 2024. CookieFlush is the free MV3 replacement. Auto-clean on tab close. Open source.

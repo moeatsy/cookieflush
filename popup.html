@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="popup-header">
+    <span class="brand">
+      <img src="icons/48_48.png" alt="" class="brand-mark" width="20" height="20">
+      <span class="brand-name" data-i18n="brandName">CookieFlush</span>
+    </span>
+    <label class="switch" title="Toggle CookieFlush">
+      <input type="checkbox" id="toggle-enabled" role="switch" aria-label="Enable auto-cleanup">
+      <span class="switch-track" aria-hidden="true"><span class="switch-knob"></span></span>
+    </label>
+  </header>
+
+  <section class="hero" id="hero" aria-labelledby="site-name site-status">
+    <div class="hero-pill-row">
+      <span id="site-status" class="pill cleaning"></span>
+    </div>
+    <h2 id="site-name" class="hero-domain">—</h2>
+    <p id="hero-meta" class="hero-meta" hidden></p>
+  </section>
+
+  <section class="actions" aria-label="Site actions">
+    <div class="wl-split-wrap">
+      <div class="wl-split">
+        <button id="primary-action" class="btn btn-primary" type="button">
+          <span class="btn-label" data-i18n="whitelistBtn">Whitelist this site</span>
+        </button>
+        <button id="wl-caret" class="btn btn-primary wl-caret" type="button" hidden
+                aria-haspopup="true" aria-expanded="false" aria-controls="wl-menu"
+                aria-label="More whitelist options">
+          <span aria-hidden="true">▾</span>
+        </button>
+      </div>
+      <div id="wl-menu" class="wl-menu" hidden role="menu" aria-label="Whitelist options">
+        <button id="wl-domain" class="wl-menu-item" type="button" role="menuitem"></button>
+        <button id="wl-sub" class="wl-menu-item" type="button" role="menuitem"></button>
+      </div>
+    </div>
+    <div class="kbd-hint" id="primary-kbd-hint">
+      <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>W</kbd>
+    </div>
+    <div class="actions-row">
+      <button id="greylist-btn" class="btn btn-secondary" type="button">Greylist</button>
+      <button id="clean-btn" class="btn btn-secondary" type="button" data-i18n="cleanNowBtn">Clean now</button>
+    </div>
+    <button id="clean-all-btn" class="btn btn-ghost btn-clean-all" type="button">
+      <span class="btn-label" data-i18n="cleanAllBtn">Clean all sites now</span>
+    </button>
+    <p class="clean-all-desc" id="clean-all-desc">
+      Clears cookies for every site that isn't whitelisted — including tabs open right now, so you'll be signed out of them.
+    </p>
+    <div class="kbd-hint" id="clean-all-kbd-hint">
+      <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd>
+    </div>
+  </section>
+
+  <section class="stats" aria-label="Statistics">
+    <div class="stat">
+      <span class="stat-num" id="total-cleaned" aria-label="0 cookies cleaned total">0</span>
+      <span class="stat-label" data-i18n="totalCleaned">cleaned</span>
+    </div>
+    <div class="stat-divider" aria-hidden="true"></div>
+    <div class="stat">
+      <span class="stat-num" id="whitelist-count" aria-label="0 sites whitelisted">0</span>
+      <span class="stat-label" data-i18n="whitelistedSites">whitelisted</span>
+    </div>
+  </section>
+
+  <footer class="popup-footer">
+    <a href="options.html" target="_blank" rel="noopener" id="settings-link" data-i18n="settingsLink">Settings ↗</a>
+    <span class="meta" id="version-meta"></span>
+  </footer>
+
+  <div id="live-region" class="sr-only" role="status" aria-live="polite"></div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

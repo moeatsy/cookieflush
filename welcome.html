@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Welcome to CookieFlush</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="welcome.css">
+</head>
+<body>
+  <main class="wrap">
+    <!-- ============ STEP 1 ============ -->
+    <section class="step is-active" id="step-1" aria-labelledby="step1-title">
+      <div class="hero">
+        <img src="icons/128_128.png" alt="" class="hero-mark" width="88" height="88">
+        <h1 class="hero-title" id="step1-title">CookieFlush is watching your tabs.</h1>
+        <p class="hero-sub">Pick a few sites you want to stay signed in to. We'll clean cookies for everything else.</p>
+      </div>
+
+      <div class="card">
+        <div class="input-row">
+          <input
+            type="text"
+            id="domain-input"
+            placeholder="gmail.com"
+            autocomplete="off"
+            autofocus
+            spellcheck="false"
+            aria-label="Add a domain to whitelist"
+          >
+          <button id="add-domain" class="btn btn-primary" type="button">Add</button>
+        </div>
+        <p class="input-help">Tip: paste a domain like <code>github.com</code> — subdomains are protected automatically.</p>
+      </div>
+
+      <ul id="domains" class="domains" aria-label="Whitelisted domains"></ul>
+
+      <div class="progress">
+        <span class="progress-dots" id="progress-dots" aria-hidden="true">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        </span>
+        <span class="progress-text" id="progress-text">0 of 3</span>
+      </div>
+
+      <div class="step-actions">
+        <button id="skip-btn" class="btn btn-ghost" type="button">Skip — start with empty list</button>
+        <button id="next-btn" class="btn btn-primary" type="button" disabled>
+          <span class="btn-label">I'm ready</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ============ STEP 2 ============ -->
+    <section class="step" id="step-2" aria-labelledby="step2-title">
+      <div class="hero compact">
+        <h1 class="hero-title" id="step2-title">One more thing.</h1>
+        <p class="hero-sub">
+          Some sites — Notion, Discord, Linear — store your login in <strong>LocalStorage</strong>, not cookies.
+          To fully log out when you close the tab, CookieFlush needs one extra Chrome permission.
+        </p>
+      </div>
+
+      <div class="perm-card">
+        <div class="perm-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M12 3L4 6V12C4 16 7.5 19.5 12 21C16.5 19.5 20 16 20 12V6L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M9 12L11 14L15.5 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="perm-body">
+          <h2 class="perm-title">Clear browser storage</h2>
+          <p class="perm-desc">
+            Lets CookieFlush delete LocalStorage and IndexedDB along with cookies.
+            Only kicks in when the matching checkbox in Settings is on.
+            We never read page content.
+          </p>
+          <div class="perm-actions">
+            <button id="grant-bd" class="btn btn-primary" type="button">Grant permission</button>
+            <button id="skip-bd" class="btn btn-ghost" type="button">Cookies only, thanks</button>
+          </div>
+          <p id="perm-result" class="perm-result" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STEP 3 ============ -->
+    <section class="step" id="step-3" aria-labelledby="step3-title">
+      <div class="done-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="64" height="64">
+          <circle cx="32" cy="32" r="30" stroke="var(--success)" stroke-width="2" fill="none"/>
+          <path d="M20 33L29 42L46 23" stroke="var(--success)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <h1 class="hero-title" id="step3-title">Ready when you are.</h1>
+      <p class="hero-sub">
+        CookieFlush is installed but <strong>not yet cleaning</strong>. Turn it on below — or skip and enable it later from the toolbar icon.
+      </p>
+
+      <div class="warn-card" role="note">
+        <span class="warn-icon" aria-hidden="true">⚠</span>
+        <div class="warn-body">
+          <strong>Heads up:</strong> once auto-cleanup is on, you'll be logged out of any site that <em>isn't</em> in your whitelist the next time you close its tab. Add sites you want to stay signed in to (banks, email, work tools) before turning it on, or use the popup to whitelist them on the fly.
+        </div>
+      </div>
+
+      <div class="stats-card">
+        <div class="stat">
+          <span class="stat-num" id="done-whitelist">0</span>
+          <span class="stat-label">whitelisted</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num">OFF</span>
+          <span class="stat-label">cleanup state</span>
+        </div>
+      </div>
+
+      <div class="step-actions center">
+        <button id="enable-later" class="btn btn-secondary" type="button">I'll enable it later</button>
+        <button id="finish-btn" class="btn btn-primary" type="button">
+          <span class="btn-label">Turn on auto-cleanup</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </button>
+      </div>
+
+      <p class="finegrain">
+        Need to change anything later? The toolbar icon shows per-site status. Right-click anywhere to whitelist with one click.
+      </p>
+    </section>
+  </main>
+
+  <script type="module" src="welcome.js"></script>
+</body>
+</html>

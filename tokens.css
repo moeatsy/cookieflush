@@ -1,0 +1,158 @@
+/* CookieFlush design tokens — single source of truth.
+   Direction: "Forensic" — sober, precise, off-black + amber. */
+
+:root {
+  /* Surfaces */
+  --bg: #fafaf9;
+  --surface: #ffffff;
+  --surface-2: #f4f4f1;
+  --surface-hover: #efeee9;
+
+  /* Lines */
+  --border: #e7e5e0;
+  --border-strong: #d4d2cc;
+
+  /* Text */
+  --text: #1a1d21;
+  --text-strong: #0c0d0e;
+  --muted: #6b6864;
+  --subtle: #94918d;
+
+  /* Brand */
+  --accent: #d97706;
+  --accent-hover: #b45309;
+  --accent-quiet: #fef3c7;
+  --on-accent: #ffffff;
+
+  /* Semantic */
+  --success: #16a34a;
+  --success-quiet: #dcfce7;
+  --warning: #d97706;
+  --warning-quiet: #fef3c7;
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+  --danger-quiet: #fee2e2;
+
+  --overlay: rgba(12, 13, 14, 0.50);
+
+  /* Type stacks — system-only, no webfont download for fast cold-start */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* Sizes */
+  --t-11: 11px;
+  --t-12: 12px;
+  --t-13: 13px;
+  --t-14: 14px;
+  --t-16: 16px;
+  --t-20: 20px;
+  --t-24: 24px;
+  --t-28: 28px;
+
+  --lh-tight: 1.2;
+  --lh-snug: 1.35;
+  --lh-normal: 1.5;
+  --tracking-tight: -0.02em;
+  --tracking-caps: 0.06em;
+
+  /* Spacing (4px base) */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+
+  /* Radius */
+  --r-1: 4px;
+  --r-2: 6px;
+  --r-3: 8px;
+  --r-4: 12px;
+  --r-full: 999px;
+
+  /* Elevation */
+  --elev-1: 0 1px 0 rgba(12, 13, 14, 0.04);
+  --elev-2: 0 2px 6px rgba(12, 13, 14, 0.06), 0 1px 0 rgba(12, 13, 14, 0.04);
+  --elev-3: 0 8px 24px rgba(12, 13, 14, 0.12), 0 2px 4px rgba(12, 13, 14, 0.06);
+
+  /* Motion */
+  --dur-fast: 60ms;
+  --dur-base: 120ms;
+  --dur-slow: 200ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Z */
+  --z-sticky: 10;
+  --z-dropdown: 50;
+  --z-modal: 100;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0c0d0e;
+    --surface: #16181b;
+    --surface-2: #1c1f23;
+    --surface-hover: #22262b;
+
+    --border: #2a2d33;
+    --border-strong: #393d44;
+
+    --text: #e8e6e1;
+    --text-strong: #f8f6f1;
+    --muted: #9a9692;
+    --subtle: #6b6864;
+
+    --accent: #fbbf24;
+    --accent-hover: #fcd34d;
+    --accent-quiet: rgba(251, 191, 36, 0.12);
+    --on-accent: #0c0d0e;
+
+    --success: #4ade80;
+    --success-quiet: rgba(74, 222, 128, 0.12);
+    --warning: #fbbf24;
+    --warning-quiet: rgba(251, 191, 36, 0.12);
+    --danger: #f87171;
+    --danger-hover: #fca5a5;
+    --danger-quiet: rgba(248, 113, 113, 0.12);
+
+    --overlay: rgba(0, 0, 0, 0.65);
+
+    --elev-1: none;
+    --elev-2: 0 0 0 1px var(--border-strong);
+    --elev-3: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--border-strong);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0ms;
+    --dur-base: 0ms;
+    --dur-slow: 0ms;
+  }
+}
+
+/* Universal focus ring — uses outline so it respects each element's
+   natural border-radius (Chrome 94+) instead of forcing a fixed radius. */
+*:focus { outline: none; }
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Resets */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+button { font-family: inherit; }

@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extensionName__",
+  "short_name": "__MSG_shortName__",
+  "description": "__MSG_extensionDescription__",
+  "version": "1.0.10",
+  "default_locale": "en",
+  "icons": {
+    "16": "icons/16_16.png",
+    "48": "icons/48_48.png",
+    "128": "icons/128_128.png"
+  },
+  "permissions": [
+    "cookies",
+    "tabs",
+    "storage",
+    "alarms",
+    "contextMenus",
+    "scripting"
+  ],
+  "optional_permissions": [
+    "browsingData"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "CookieFlush",
+    "default_icon": {
+      "16": "icons/16_16.png",
+      "48": "icons/48_48.png"
+    }
+  },
+  "options_page": "options.html",
+  "commands": {
+    "toggle-cleanup": {
+      "suggested_key": { "default": "Alt+Shift+C" },
+      "description": "Toggle auto-cleanup on/off"
+    },
+    "whitelist-current-site": {
+      "suggested_key": { "default": "Alt+Shift+W" },
+      "description": "Whitelist current site"
+    },
+    "force-clean-now": {
+      "suggested_key": { "default": "Alt+Shift+X" },
+      "description": "Force clean all non-whitelisted cookies"
+    }
+  },
+  "minimum_chrome_version": "120"
+}

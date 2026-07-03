@@ -1,0 +1,15 @@
+{
+  "name": "cookieflush",
+  "version": "1.0.9",
+  "private": true,
+  "type": "module",
+  "description": "Dev/test tooling for the CookieFlush extension (not shipped in the packaged zip).",
+  "scripts": {
+    "test": "node --test",
+    "test:e2e": "playwright test",
+    "test:all": "node --test && playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1"
+  }
+}

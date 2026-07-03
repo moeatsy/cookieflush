@@ -1,0 +1,113 @@
+{
+  "appName": {
+    "message": "Auto-Delete Cookies on Tab Close — Cookie AutoDelete Alternative, Whitelist"
+  },
+  "shortDesc": {
+    "message": "Auto-delete cookies on tab close — Cookie AutoDelete alternative for Chrome MV3. Whitelist trusted sites. No telemetry, open source."
+  },
+  "storeDesc": {
+    "message": "The classic Cookie AutoDelete extension was disabled when Chrome enforced Manifest V3 — and most replacements either nag you with banners, break logins, or hide the cleanup behind a paywall. This is the Cookie AutoDelete alternative that actually behaves: cookies are auto-deleted the moment you close a tab, your trusted sites stay logged in, and nothing leaves your browser.\n\nHOW IT WORKS\n\n• Auto-delete cookies on tab close — the second the last tab on a domain closes, its cookies are wiped.\n• Whitelist trusted sites — banks, email, GitHub, work tools stay logged in across sessions.\n• Greylist for temporary protection — protect a site for 7 days (or your chosen window) while you finish shopping or research, then it self-expires.\n• Scheduled sweep — clean leftover cookies on an interval you choose (15 minutes to 24 hours).\n• Cleanup on browser startup — every session starts clean.\n• Optional LocalStorage, IndexedDB, and cache cleanup — opt-in via a just-in-time Chrome permission. Nothing is requested up front, nothing is hidden behind premium.\n\nWHO IT'S FOR\n\n• Former Cookie AutoDelete users left without a working Chrome version after Manifest V2 was retired.\n• Privacy-conscious users who want third-party tracking cookies and zombie cookies gone, but stay logged into the sites they actually use.\n• People sharing a computer at home, at work, at school, at a library.\n• Developers and QA testers who clear site data dozens of times a day.\n• Anyone tired of digging through Chrome's settings menu to manually delete cookies.\n\nHOW TO USE\n\n1. Install. The welcome page asks you to whitelist your 3 most-used sites — typically banks, email, your work apps.\n2. Browse normally. When you close the last tab on a non-whitelisted site, its cookies are auto-deleted.\n3. Need temporary access? Open the popup and greylist the current site for the window you choose.\n\nWHY THIS EXTENSION\n\n→ Native Manifest V3 build — won't get disabled the way the original Cookie AutoDelete was when Chrome retired MV2.\n→ 100% client-side — no servers, no telemetry, no analytics SDKs, no remote configuration, no ad networks.\n→ All features included — no premium tier, no subscription, no paywall behind LocalStorage / IndexedDB / cache cleanup.\n→ Active development — bug fixes ship in days, not years.\n→ Cross-device whitelist sync via Chrome's native storage.sync — your trusted sites follow you between devices.\n→ Lightweight (~80 KB) — no measurable impact on browsing speed or memory.\n\nHOW IT COMPARES\n\n• vs. the legacy Cookie AutoDelete: works on current Chrome (MV3-native), responsive UI, won't disappear when Chrome retires more APIs.\n• vs. Chrome's built-in \"Clear cookies on exit\": works per-domain when a tab closes (not just per-browser shutdown); adds whitelist, greylist, and a per-domain audit log.\n• vs. cookie banner blockers like \"I don't care about cookies\": those hide consent prompts — cookies still get set. This extension removes them after the fact.\n• vs. one-click manual cookie removers: zero ongoing clicks. The extension does the work for you.\n\nEVERY FEATURE\n\n✓ Auto-delete cookies on tab close (per-domain)\n✓ Whitelist — permanent protection for trusted sites\n✓ Greylist — temporary protection, default 7 days, configurable\n✓ Scheduled sweep (15 minutes to 24 hours)\n✓ Cleanup on browser startup\n✓ Right-click \"Whitelist this site\" from any page\n✓ Keyboard shortcuts: Alt+Shift+C (toggle), Alt+Shift+W (whitelist), Alt+Shift+X (force clean)\n✓ Daily counter badge on the toolbar icon\n✓ Per-domain deletion log with timestamps\n✓ Optional LocalStorage, IndexedDB, and cache cleanup\n✓ Light, dark, and system themes (respects prefers-color-scheme)\n✓ Cross-device whitelist sync via chrome.storage.sync\n✓ Export and import configuration\n✓ Removes first-party, third-party, session, persistent, and tracking cookies\n✓ Compatible with Chrome 120+, Brave, Edge, Opera, Vivaldi, and other Chromium MV3 browsers\n\nPERMISSIONS, EXPLAINED\n\n• cookies — read and delete cookies (the whole point of the extension).\n• tabs — detect when the last tab on a domain closes.\n• storage — save your whitelist and settings locally, sync via Chrome.\n• alarms — schedule the periodic sweep and daily badge reset.\n• contextMenus — add the right-click \"Whitelist this site\" entry.\n• scripting — show an in-page rating prompt after a successful cleanup; rendered in an isolated Shadow DOM and never reads page content.\n• <all_urls> — required by chrome.cookies to access cookies from any visited domain.\n• browsingData (optional) — only requested if you turn on LocalStorage / IndexedDB / cache cleanup.\n\nWe never read page content, browsing history, bookmarks, or anything outside cookies.\n\n\nZero telemetry. Zero analytics. Zero servers. Zero ads. Zero \"anonymous usage data.\" Your whitelist, settings, and stats live on your device. The extension makes no outbound network requests of its own — the only network activity it can cause is opening a Chrome Web Store tab if you explicitly choose to rate the extension.\n\nFAQ\n\nQ: Will this log me out everywhere?\nA: No. Whitelist the sites you trust — banks, email, GitHub, work tools — and their cookies are protected. Only non-whitelisted sites get cleaned.\n\nQ: What's the difference between whitelist and greylist?\nA: Whitelist is permanent. Greylist is temporary and auto-expires after 7 days (configurable). Use greylist for sites you're using this week but don't want to keep forever.\n\nQ: Does this work on Brave, Edge, Opera, Vivaldi?\nA: Yes — any Chromium-based browser on version 120 or later.\n\nQ: What happened to the original Cookie AutoDelete?\nA: It was Manifest V2 only, and Chrome retired MV2 in 2024. The maintainer didn't port it. This extension is a clean MV3-native rewrite of the same idea.\n\nQ: Is anything sent to a server?\nA: No. The extension is 100% client-side. There is no backend.\n\nInstall. Whitelist your three most-used sites. Forget about cookies. Next time you close a tab, they're gone."
+  },
+
+  "extensionName": {
+    "message": "Auto-Delete Cookies on Tab Close — Cookie AutoDelete Alternative, Whitelist",
+    "description": "Displayed in Chrome Web Store and chrome://extensions."
+  },
+  "shortName": {
+    "message": "CookieFlush",
+    "description": "Used when the full name would be too long."
+  },
+  "extensionDescription": {
+    "message": "Auto-delete cookies on tab close — Cookie AutoDelete alternative for Chrome MV3. Whitelist trusted sites. No telemetry, open source.",
+    "description": "Chrome Web Store short description (≤132 chars)."
+  },
+
+  "brandName": {
+    "message": "CookieFlush",
+    "description": "Brand wordmark in popup header."
+  },
+
+  "ctxWhitelist": {
+    "message": "Whitelist this site (keep cookies)",
+    "description": "Right-click context menu entry."
+  },
+  "ctxWhitelistDomain": {
+    "message": "Whitelist all of *.$DOMAIN$",
+    "description": "Right-click context menu entry on a subdomain — whitelist the whole registrable domain.",
+    "placeholders": {
+      "domain": { "content": "$1", "example": "google.com" }
+    }
+  },
+  "ctxWhitelistExact": {
+    "message": "Whitelist only $HOST$",
+    "description": "Right-click context menu entry — whitelist just that exact host, not its subdomains.",
+    "placeholders": {
+      "host": { "content": "$1", "example": "mail.google.com" }
+    }
+  },
+  "ctxUnwhitelist": {
+    "message": "Remove from whitelist",
+    "description": "Right-click context menu entry shown when the current site is already whitelisted."
+  },
+  "ctxForceClean": {
+    "message": "Clean this site's cookies now",
+    "description": "Right-click context menu entry — force-clean the current site's cookies."
+  },
+  "whitelistBtn": {
+    "message": "Whitelist this site",
+    "description": "Popup primary CTA when site is not yet whitelisted."
+  },
+  "greylistBtn": {
+    "message": "Greylist 7d",
+    "description": "Popup secondary CTA — adds the current site to the greylist for the user's default duration."
+  },
+  "cleanNowBtn": {
+    "message": "Clean now",
+    "description": "Popup secondary CTA — force-clean the current site's cookies."
+  },
+  "cleanAllBtn": {
+    "message": "Clean all sites now",
+    "description": "Popup button — global sweep of all non-whitelisted cookies, including open tabs."
+  },
+  "totalCleaned": {
+    "message": "cleaned",
+    "description": "Popup stat label under the total-cleaned figure."
+  },
+  "whitelistedSites": {
+    "message": "whitelisted",
+    "description": "Popup stat label under the whitelist count."
+  },
+  "settingsLink": {
+    "message": "Settings ↗",
+    "description": "Popup footer link to the options page."
+  },
+
+  "ratingPrompt": {
+    "message": "How is {app} working out?",
+    "description": "Rating widget — initial prompt shown above the emoji scale."
+  },
+  "ratingFive": {
+    "message": "Glad to hear it. A quick rating helps others find {app}.",
+    "description": "Rating widget — shown after the 😍 (5/5) emoji is picked."
+  },
+  "ratingFivePrimary": {
+    "message": "Leave a quick review",
+    "description": "Rating widget — primary CTA after 5/5; opens Chrome Web Store reviews."
+  },
+  "ratingFour": {
+    "message": "Thanks for the kind word.",
+    "description": "Rating widget — shown after 😄 (4/5) when no feedback URL is configured."
+  },
+  "ratingLow": {
+    "message": "Thanks for letting us know.",
+    "description": "Rating widget — shown after 😡/😐/🙂 (1–3/5) when no feedback URL is configured."
+  },
+  "ratingThanks": {
+    "message": "Thanks for letting us know!",
+    "description": "Rating widget — generic thanks fallback."
+  },
+  "ratingNotNow": {
+    "message": "Maybe later",
+    "description": "Rating widget — soft-dismiss link under the emoji scale."
+  }
+}
